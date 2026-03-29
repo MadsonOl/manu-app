@@ -65,6 +65,30 @@ import com.manu.manu_app.ui.theme.SurfaceVariant
 import com.manu.manu_app.ui.theme.Tertiary
 import com.manu.manu_app.viewmodel.SolicitanteViewModel
 
+fun obterEndereco(context: android.content.Context, lat: Double, lng: Double): String {
+    return try {
+        val geocoder = android.location.Geocoder(context, java.util.Locale("pt", "BR"))
+        val resultados = geocoder.getFromLocation(lat, lng, 1)
+        if (!resultados.isNullOrEmpty()) {
+            val endereco = resultados[0]
+            val partes = mutableListOf<String>()
+            endereco.thoroughfare?.let { partes.add(it) }
+            endereco.subThoroughfare?.let { partes.add(it) }
+            endereco.subLocality?.let { partes.add(it) }
+            endereco.subAdminArea?.let { partes.add(it) }
+            if (partes.isEmpty()) {
+                endereco.getAddressLine(0) ?: "Lat: $lat, Lng: $lng"
+            } else {
+                partes.joinToString(", ")
+            }
+        } else {
+            "Lat: $lat, Lng: $lng"
+        }
+    } catch (e: Exception) {
+        "Lat: $lat, Lng: $lng"
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SolicitanteScreen(
@@ -83,7 +107,8 @@ fun SolicitanteScreen(
                 fusedClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, null)
                     .addOnSuccessListener { location ->
                         if (location != null) {
-                            viewModel.onLocalizacaoCapturada(location.latitude, location.longitude)
+                            val endereco = obterEndereco(context, location.latitude, location.longitude)
+                            viewModel.onLocalizacaoCapturada(location.latitude, location.longitude, endereco)
                         } else {
                             viewModel.onGpsFalhou()
                         }
@@ -107,7 +132,8 @@ fun SolicitanteScreen(
                 fusedClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, null)
                     .addOnSuccessListener { location ->
                         if (location != null) {
-                            viewModel.onLocalizacaoCapturada(location.latitude, location.longitude)
+                            val endereco = obterEndereco(context, location.latitude, location.longitude)
+                            viewModel.onLocalizacaoCapturada(location.latitude, location.longitude, endereco)
                         } else {
                             viewModel.onGpsFalhou()
                         }

@@ -45,13 +45,13 @@ class SolicitanteViewModel : ViewModel() {
         _uiState.update { it.copy(solicitante = valor) }
     }
 
-    fun onLocalizacaoCapturada(lat: Double, lng: Double) {
+    fun onLocalizacaoCapturada(lat: Double, lng: Double, endereco: String) {
         _uiState.update {
             it.copy(
                 latitude = lat,
                 longitude = lng,
                 gpsStatus = "Localizacao capturada",
-                local = if (it.local.isBlank()) "Lat: $lat, Lng: $lng" else it.local
+                local = if (it.local.isBlank()) endereco else it.local
             )
         }
     }
