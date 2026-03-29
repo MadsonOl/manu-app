@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "819231602265",
+    "project_id": "manu-app-a8c1c",
+    "storage_bucket": "manu-app-a8c1c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819231602265:android:fddbf9ae367cf4954f2348",
+        "android_client_info": {
+          "package_name": "com.example.manu_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT6PB60AIBcfc1yTTNeMyoOaq5A36kctA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819231602265:android:3dbf5940d822c0514f2348",
+        "android_client_info": {
+          "package_name": "com.manu.manu_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT6PB60AIBcfc1yTTNeMyoOaq5A36kctA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
