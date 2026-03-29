@@ -9,10 +9,12 @@ import androidx.navigation.navArgument
 import com.manu.manu_app.data.repository.AuthRepository
 import com.manu.manu_app.ui.screens.chamados.ChamadoDetalheScreen
 import com.manu.manu_app.ui.screens.chamados.ChamadosScreen
+import com.manu.manu_app.ui.screens.empresas.EmpresasScreen
 import com.manu.manu_app.ui.screens.home.HomeScreen
 import com.manu.manu_app.ui.screens.login.LoginScreen
 import com.manu.manu_app.ui.screens.ordens.GerarOsScreen
 import com.manu.manu_app.ui.screens.ordens.OrdensScreen
+import com.manu.manu_app.ui.screens.profissionais.ProfissionaisScreen
 import com.manu.manu_app.ui.screens.solicitante.SolicitanteScreen
 
 @Composable
@@ -34,7 +36,9 @@ fun NavGraph(navController: NavHostController) {
             LoginScreen(navController = navController)
         }
         composable(Routes.CHAMADOS) {
-            ChamadosScreen(navController = navController)
+            GestorScaffold(navController = navController) {
+                ChamadosScreen(navController = navController)
+            }
         }
         composable(
             Routes.CHAMADO_DETALHE,
@@ -51,7 +55,19 @@ fun NavGraph(navController: NavHostController) {
             GerarOsScreen(navController = navController, chamadoId = id)
         }
         composable(Routes.ORDENS) {
-            OrdensScreen(navController = navController)
+            GestorScaffold(navController = navController) {
+                OrdensScreen(navController = navController)
+            }
+        }
+        composable(Routes.PROFISSIONAIS) {
+            GestorScaffold(navController = navController) {
+                ProfissionaisScreen(navController = navController)
+            }
+        }
+        composable(Routes.EMPRESAS) {
+            GestorScaffold(navController = navController) {
+                EmpresasScreen(navController = navController)
+            }
         }
     }
 }

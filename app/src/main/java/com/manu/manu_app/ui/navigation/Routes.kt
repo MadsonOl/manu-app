@@ -8,6 +8,8 @@ object Routes {
     const val CHAMADO_DETALHE = "chamado_detalhe/{chamadoId}"
     const val ORDENS = "ordens"
     const val GERAR_OS = "gerar_os/{chamadoId}"
+    const val PROFISSIONAIS = "profissionais"
+    const val EMPRESAS = "empresas"
 
     fun chamadoDetalhe(id: String) = "chamado_detalhe/$id"
     fun gerarOs(id: String) = "gerar_os/$id"

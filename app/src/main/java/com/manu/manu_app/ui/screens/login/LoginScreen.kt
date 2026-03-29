@@ -50,6 +50,7 @@ import com.manu.manu_app.ui.theme.Background
 import com.manu.manu_app.ui.theme.ErrorContainer
 import com.manu.manu_app.ui.theme.OnBackground
 import com.manu.manu_app.ui.theme.OnError
+import com.manu.manu_app.ui.theme.OnSurfaceVariant
 import com.manu.manu_app.ui.theme.Primary
 import com.manu.manu_app.viewmodel.LoginEvent
 import com.manu.manu_app.viewmodel.LoginViewModel
@@ -187,6 +188,14 @@ fun LoginScreen(
                     Text("Entrar")
                 }
             }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                text = "v1.0.1",
+                fontSize = 12.sp,
+                color = OnSurfaceVariant
+            )
         }
     }
 }
