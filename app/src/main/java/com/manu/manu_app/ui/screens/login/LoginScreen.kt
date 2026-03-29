@@ -192,7 +192,7 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "1.0.2",
+                text = "1.0.3",
                 fontSize = 12.sp,
                 color = OnSurfaceVariant
             )

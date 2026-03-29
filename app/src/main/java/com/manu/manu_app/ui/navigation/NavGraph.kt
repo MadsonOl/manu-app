@@ -1,5 +1,9 @@
 package com.manu.manu_app.ui.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -25,7 +29,38 @@ fun NavGraph(navController: NavHostController) {
         Routes.HOME
     }
 
-    NavHost(navController = navController, startDestination = startDestination) {
+    NavHost(
+        navController = navController,
+        startDestination = startDestination,
+        enterTransition = {
+            fadeIn(animationSpec = tween(300)) +
+            slideIntoContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.Start,
+                animationSpec = tween(300)
+            )
+        },
+        exitTransition = {
+            fadeOut(animationSpec = tween(200)) +
+            slideOutOfContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.Start,
+                animationSpec = tween(200)
+            )
+        },
+        popEnterTransition = {
+            fadeIn(animationSpec = tween(300)) +
+            slideIntoContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.End,
+                animationSpec = tween(300)
+            )
+        },
+        popExitTransition = {
+            fadeOut(animationSpec = tween(200)) +
+            slideOutOfContainer(
+                towards = AnimatedContentTransitionScope.SlideDirection.End,
+                animationSpec = tween(200)
+            )
+        }
+    ) {
         composable(Routes.HOME) {
             HomeScreen(navController = navController)
         }

@@ -1,6 +1,7 @@
 package com.manu.manu_app.ui.screens.home
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.layout.Arrangement
@@ -27,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,13 +37,17 @@ import com.manu.manu_app.ui.navigation.Routes
 import com.manu.manu_app.ui.theme.Background
 import com.manu.manu_app.ui.theme.OnSurfaceVariant
 import com.manu.manu_app.ui.theme.Primary
+import kotlinx.coroutines.delay
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    var visible by remember { mutableStateOf(false) }
+    var visibleTop by remember { mutableStateOf(false) }
+    var visibleBottom by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        visible = true
+        visibleTop = true
+        delay(150)
+        visibleBottom = true
     }
 
     Scaffold(
@@ -56,8 +62,8 @@ fun HomeScreen(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             AnimatedVisibility(
-                visible = visible,
-                enter = fadeIn() + slideInVertically { -40 }
+                visible = visibleTop,
+                enter = fadeIn(tween(400)) + slideInVertically(tween(400)) { -60 }
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -82,7 +88,16 @@ fun HomeScreen(navController: NavController) {
                         color = OnSurfaceVariant,
                         modifier = Modifier.padding(bottom = 48.dp)
                     )
+                }
+            }
 
+            AnimatedVisibility(
+                visible = visibleBottom,
+                enter = fadeIn(tween(400)) + slideInVertically(tween(400)) { 60 }
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                     Button(
                         onClick = { navController.navigate(Routes.SOLICITANTE) },
                         modifier = Modifier.fillMaxWidth(),
@@ -99,7 +114,7 @@ fun HomeScreen(navController: NavController) {
                         onClick = { navController.navigate(Routes.LOGIN) },
                         modifier = Modifier.fillMaxWidth(),
                         border = ButtonDefaults.outlinedButtonBorder(enabled = true).copy(
-                            brush = androidx.compose.ui.graphics.SolidColor(Primary)
+                            brush = SolidColor(Primary)
                         ),
                         colors = ButtonDefaults.outlinedButtonColors(
                             contentColor = Primary

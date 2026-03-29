@@ -8,12 +8,16 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.manu.manu_app.ui.theme.OnSurfaceVariant
+import com.manu.manu_app.ui.theme.Primary
+import com.manu.manu_app.ui.theme.PrimaryContainer
 import com.manu.manu_app.ui.theme.Surface
 
 @Composable
@@ -48,7 +52,14 @@ fun GestorScaffold(
                         },
                         icon = { Icon(item.icon, contentDescription = item.label) },
                         label = { Text(item.label) },
-                        alwaysShowLabel = true
+                        alwaysShowLabel = true,
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = Primary,
+                            selectedTextColor = Primary,
+                            indicatorColor = PrimaryContainer,
+                            unselectedIconColor = OnSurfaceVariant,
+                            unselectedTextColor = OnSurfaceVariant
+                        )
                     )
                 }
             }
