@@ -77,7 +77,7 @@ verifique se a `BASE_URL` aponta para o ambiente correto:
 
 ```kotlin
 // Producao
-private const val BASE_URL = "https://manu-backendp0bk.onrender.com/"
+private const val BASE_URL = "https://manu-backend-p0bk.onrender.com/"
 
 // Local (substitua se necessario)
 // private const val BASE_URL = "http://10.0.2.2:8000/"
