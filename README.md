@@ -144,7 +144,7 @@ O app utiliza **Firebase Authentication** com email e senha.
 Este app consome a API REST do **manu-backend**:
 https://github.com/MadsonOl/manu-backend
 
-**URL de producao:** https://manu-backendp0bk.onrender.com
+**URL de producao:** https://manu-backend-p0bk.onrender.com
 
 > **Nota:** o backend roda no plano gratuito do Render. A primeira requisicao
 > apos um periodo de inatividade pode levar ate 60 segundos para responder
